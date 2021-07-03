@@ -4,12 +4,20 @@ suppressPackageStartupMessages(library(stringr))
 suppressPackageStartupMessages(library(tidyr))
 suppressPackageStartupMessages(library(here))
 
+# ignore warnings
+options(warn=-1)
+
 # parse arguments
 args <- commandArgs(trailingOnly = TRUE)
 data_path <- args[1]
 output <- args[2]
 
+# print input and output arguments to screen
+message(paste0("Input File Path: ", data_path))
+message(paste0("Output File Path: ", output))
+
 # read script
+message(paste0("[", Sys.time(), "] Loading input file..."))
 jass_script <- readLines(here(data_path), encoding = "UTF-8")
 
 # convert natives to functions
@@ -58,6 +66,7 @@ native_convert <- function(line) {
 }
 
 
+message(paste0("[", Sys.time(), "] Converting input file...")) 
 # find native lines in script
 native_lines <- jass_script[grepl("native", jass_script)]
 # convert script
@@ -99,3 +108,6 @@ converted_script <- map2_dfr(converted_script$original, converted_script$convert
 
 # write file
 writeLines(converted_script$converted_lines, output, useBytes = T)
+
+# print completion on success
+message(paste0("[", Sys.time(), "] Conversion SUCCESS"))
