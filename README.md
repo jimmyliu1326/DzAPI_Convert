@@ -20,7 +20,7 @@ conda activate dzapi_convert
 
 ## Usage
 * Run the below command line to convert
-* Make sure the `convert_dz_api.R` is in current working directory or have been added to $PATH
+* Make sure the `convert_dz_api.R` is in current working directory or has been added to $PATH
 ```
 Rscript convert_dz_api.R path/to/war3map.j path/to/output_file
 ```
