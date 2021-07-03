@@ -3,7 +3,7 @@
 ## Description
 The main script `convert_dz_api.R` functions to convert all Dz API natives in war3map.j to regular functions
 
-## Installation
+## Installation via Conda
 ```
 # Clone the repo
 git clone https://github.com/jimmyliu1326/DzAPI_Convert.git
